@@ -22,7 +22,18 @@ export const {
   signOut,
 } = NextAuth({
   adapter: DrizzleAdapter(db, tableCreator),
-  providers: [Discord],
+  providers: [
+    Discord,
+
+    // TODO : replace with Google/
+    // import GoogleProvider from "next-auth/providers/google";
+    // https://next-auth.js.org/providers/google
+    // GoogleProvider({
+    //   // https://next-auth.js.org/providers/google
+    //   clientId: process.env.GOOGLE_CLIENT_ID,
+    //   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    // }),
+  ],
   callbacks: {
     session: (opts) => {
       if (!("user" in opts)) throw "unreachable with session strategy";
