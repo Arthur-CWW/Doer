@@ -3,8 +3,12 @@ import { Button } from "@acme/ui/button";
 
 export async function AuthShowcase() {
   const session = await auth();
-
-  if (!session) {
+  console.log("-----------------------------------------------------------");
+  console.log("session");
+  console.log(session);
+  console.log(typeof session);
+  console.log("-----------------------------------------------------------");
+  if (!session || !session.user) {
     return (
       <form>
         <Button
@@ -19,7 +23,6 @@ export async function AuthShowcase() {
       </form>
     );
   }
-
   return (
     <div className="flex flex-col items-center justify-center gap-4">
       <p className="text-center text-2xl">
